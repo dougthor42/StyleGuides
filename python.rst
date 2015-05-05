@@ -59,13 +59,13 @@ Classes
   2.  ``__mangled`` methods
   3.  ``_private`` methods
   4.  ``public`` methods
+  5.  ``_on_private`` event handlers
+  6.  ``on_public`` event handlers
 
 + Event handlers
 
   + begin with ``on_`` for public handlers or ``_on_`` for
     private handlers.
-
-  + are listed at the end of their respective section
 
 + Class sections are broken up by the following, with a single enter before
   and after::
