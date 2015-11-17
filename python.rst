@@ -9,6 +9,9 @@ Contents:
 + `Package Structure`_
 + `Naming Conventions`_
 + `Code Sections`_
+
+  + `Imports`_
+  
 + `Classes`_
 + `Docstrings`_
 
@@ -83,6 +86,65 @@ Code Sections
     # ---------------------------------------------------------------------------
     
   - This is also how various class setions are denoted.
+
+Imports
+=======
+
++ Imports should be organized into three sections: Standard Library, Third-Party, and then within-Package.
++ Each section should be in alphabetical order
++ When ``from x import y`` is used, it it placed at the end of the section.
+
+Example::
+
+  # ---------------------------------------------------------------------------
+  ### Imports
+  # ---------------------------------------------------------------------------
+  # Standard Library
+  import configparser
+  import os
+  import os.path as osp
+
+  # Third-Party
+  import numpy as np
+  import wafer_map.wm_core as wm_core
+  import wx
+  import wx.lib.plot as wxplot
+  from wx.lib.floatcanvas import FloatCanvas
+
+  # Package / Application
+  (See below)
+
+For various reasons, I've found that the within-Package imports must be formatted like so::
+
+  # Package
+  try:
+      # Imports used by UnitTests
+      from . import supporting_module_1
+      from . import supporting_module_2
+      from . import (__project_name__,
+                     __version__,
+                     __released__,
+                     )
+      #logging.debug("Imports for UnitTests")
+  except SystemError:
+      try:
+          # Imports used by Spyder
+          import supporting_module_1
+          import supporting_module_2
+          from __init__ import (__project_name__,
+                                __version__,
+                                __released__,
+                                )
+          #logging.debug("Imports for Spyder IDE")
+      except ImportError:
+          # Imports used by cx_freeze
+          from packagename import supporting_module_1
+          from packagename import supporting_module_2
+          from packagename import (__project_name__,
+                                   __version__,
+                                   __released__,
+                                   )
+          #logging.debug("Imports for Executable")
 
 Classes
 -------
