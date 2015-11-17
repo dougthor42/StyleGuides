@@ -20,7 +20,43 @@ Summary
 Package Structure
 -----------------
 
-<add me>
+::
+
+  PackageName
+  │   .gitignore
+  │   .travis.yml
+  │   appveyor.yml
+  │   build_exe.bat
+  │   build_executables.py
+  │   dev-requirements.txt
+  │   LICENSE
+  │   README.rst
+  │   setup.py
+  │
+  ├───appveyor                       (scripts for Appveyor CI)
+  │       get-7zip.ps1
+  │       install.ps1
+  │       run_with_env.cmd
+  │
+  ├───build                          (built executables)
+  ├───build_reqs                     (wheels required by CI services)
+  ├───dist                           (source distribution files)
+  ├───doc                            (documentation)
+  ├───img                            (supporting images)
+  ├───log                            (log files)
+  └───packagename
+      │   __init__.py
+      │   main_module.py
+      │   supporting_module_1.py
+      │   supporting_module_2.py
+      │
+      └───tests
+          │    __init__.py
+          │    test_main_module.py
+          │    test_supporting_module_1.py
+          │    test_supporting_module_2.py
+          │
+          └────data                 (data files used for unit tests)
 
 Naming Conventions
 ------------------
@@ -42,9 +78,9 @@ Code Sections
 
 + collections of similar functions should be denoted by::
 
-    ### #--------------------------------------------------------------------
-    ### Group or Section
-    ### #--------------------------------------------------------------------
+    # ---------------------------------------------------------------------------
+    ### Section Name
+    # ---------------------------------------------------------------------------
     
   - This is also how various class setions are denoted.
 
@@ -70,9 +106,9 @@ Classes
 + Class sections are broken up by the following, with a single enter before
   and after::
 
-    ### #--------------------------------------------------------------------
+    # -----------------------------------------------------------------------
     ### Class Section
-    ### #--------------------------------------------------------------------
+    # -----------------------------------------------------------------------
 
   - Note that there is no space after the hash on the pre- and post-lines
 
